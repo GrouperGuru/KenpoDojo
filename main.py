@@ -50,5 +50,5 @@ def main():
                 break
 
 if __name__ == "__main__":
-    response("Hello, I'm your voice assistant. To interact simply say, Assistant.")
+    response("Hello, I'm your Dojo assistant. To interact simply say, Assistant.")
     main()
