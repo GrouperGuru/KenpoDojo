@@ -3,6 +3,8 @@
 import speech_recognition as speech
 from gtts import gTTS
 import os as player
+import random
+import time
 
 def listening():
     # obtain audio from the microphone
@@ -28,27 +30,33 @@ def response(response_text):
     tts.save("response.mp3")
     player.system('afplay response.mp3')
 
-tasks = []
+techniques = "techniques.txt"
 
 def main():
     while True:
         orders = listening()
-        trigger = "assistant"
+        trigger = "dojo"
 
         if orders and trigger in orders:
-            if "add a task" in orders:
-                response("What task would you like to add?")
-                task = listening()
-                tasks.append(task)
-                response("Adding " + task + " to your list of tasks")
-            elif "list tasks" in orders:
-                response("Your tasks are:")
-                for task in tasks:
-                    response(task)
+            if "start training" in orders:
+                response("Starting training")
+                for technique in techniques:
+                    lines = open(techniques).read().splitlines()
+                    random_line = random.choice(lines)
+                    response(random_line)
+                    time.sleep(5)
+            elif "next" in orders:
+                next = True
+                for technique in techniques:
+                    while next == True:
+                        lines = open(techniques).read().splitlines()
+                        random_line = random.choice(lines)
+                        response(random_line)
+                        next = False
             elif "exit" in orders:
                 response("See you soon!")
                 break
 
 if __name__ == "__main__":
-    response("Hello, I'm your Dojo assistant. To interact simply say, Assistant.")
+    response("Hello, I'm your Dojo assistant. To interact simply say, Dojo.")
     main()
