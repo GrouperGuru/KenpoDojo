@@ -8,7 +8,6 @@ import random
 import time
 
 def listening():
-    # obtain audio from the microphone
     recognition = speech.Recognizer()
     with speech.Microphone() as source:
         print("Say something!")
