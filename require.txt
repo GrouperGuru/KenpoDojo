@@ -1,5 +1,6 @@
 gTTS==2.5.1
 PyAudio==0.2.14
+pyttsx4==3.0.15
 soundfile==0.12.1
 SpeechRecognition==3.10.1
 virtualenv==20.13.2
