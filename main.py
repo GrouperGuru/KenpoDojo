@@ -3,7 +3,6 @@
 import speech_recognition as speech
 from gtts import gTTS
 import os as player
-import tkinter as tk
 import random
 import time
 
@@ -27,7 +26,7 @@ def listening():
         return None
 
 def response(response_text):
-    print(response_text)
+    #print(response_text)
     tts = gTTS(text=response_text, lang='en')
     tts.save("response.mp3")
     player.system('afplay response.mp3')
@@ -61,9 +60,13 @@ def main():
                         response(random_line)
                         next = False
             elif "exit" in orders:
-                response("See you soon!")
+                response("I hope you trained well.")
+                player.system('afplay "outro.mp3"')
                 break
 
 if __name__ == "__main__":
-    response("Hello, I'm your Dojo assistant. To interact say, Dojo. For help, say Dojo help.")
+    player.system('afplay "intro.mp3"')
+    response("Hello, I'm your Dojo assistant.")
+    response("To interact say the trigger word 'Dojo', followed by a command.")
+    response("For help, say 'Dojo' help.")
     main()
